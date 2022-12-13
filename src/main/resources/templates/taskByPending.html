@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<!--<nav class="navbar navbar-light" style="background-color: #fde3f0;">-->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7945ad;">
+    <a class="navbar-brand" th:href="@{/}" style="font-family: 'Bradley Hand'">My Tracker App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/register}">Register <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Show Tasks
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="error.html">Action</a>
+                    <a class="dropdown-item" href="error.html">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="error.html">Something else here</a>
+                </div>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color: #FFFFFF">Search</button>
+        </form>
+    </div>
+</nav>
+
+    <div class="container my-5">
+
+        <a th:href="@{/}" style="color: #7945ad;">All tasks</a>
+        <a th:href="@{/in-progress}" style="color: #7945ad;">In-progress</a>
+        <a th:href="@{/done-tasks}" style="color: #7945ad;"> Done tasks</a>
+
+        <h3 style="color: #7945ad; text-align: center">PENDING TASKS</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10" >
+                    <table class="table md-10 container my-10">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">TITLE   </th>
+                            <th scope="col">DESCRIPTION</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">CREATED AT</th>
+                            <th scope="col">UPDATED AT</th>
+                            <th scope="col">COMPLETED AT</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody  class="table md-10">
+                        <tr th:each="task: ${pendingTasks}">
+                            <th th:text="${task.id}" scope="row"></th>
+                            <td th:text="${task.title}"></td>
+                            <td th:text="${task.description}"></td>
+                            <td th:text="${task.status}"></td>
+                            <td th:text="${task.createdAt}"></td>
+                            <td th:text="${task.updatedAt}"></td>
+                            <td th:text="${task.completedAt}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
